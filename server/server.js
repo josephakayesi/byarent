@@ -2,6 +2,19 @@ const app = require('express')()
 const mongoose = require('mongoose')
 const admins = require('../routes/api/admins')
 const users = require('../routes/api/users')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const helmet = require('helmet')
+
+// Cors middleware
+app.use(cors())
+
+// Body Parser Middleware
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+
+// Helmet middleware
+app.use(helmet())
 
 // DB Config
 const db = require('../config/keys').mongoURI
