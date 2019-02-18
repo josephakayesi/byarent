@@ -1,0 +1,25 @@
+{
+  "name": "byarent",
+  "version": "1.0.0",
+  "description": "A home buying platform",
+  "main": "server.js",
+  "author": "Joseph Akayesi",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server/server",
+    "server": "nodemon server/server"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.13",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
