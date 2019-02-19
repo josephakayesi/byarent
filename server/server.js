@@ -2,9 +2,10 @@ const app = require('express')()
 const mongoose = require('mongoose')
 const admins = require('../routes/api/admins')
 const users = require('../routes/api/users')
-const bodyParser = require('body-parser')
 const cors = require('cors')
+const bodyParser = require('body-parser')
 const helmet = require('helmet')
+const passport = require('passport')
 
 // Cors middleware
 app.use(cors())
@@ -24,7 +25,11 @@ mongoose.connect(db, { useNewUrlParser: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err))
 
-app.get('/', (req, res) => res.send('Hello'))
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('../config/passport')(passport)
 
 // Use Routes
 app.use('/api/admins', admins)
