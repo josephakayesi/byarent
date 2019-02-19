@@ -2,6 +2,7 @@ const app = require('express')()
 const mongoose = require('mongoose')
 const admins = require('../routes/api/admins')
 const users = require('../routes/api/users')
+const houses = require('../routes/api/houses')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
@@ -34,6 +35,7 @@ require('../config/passport')(passport)
 // Use Routes
 app.use('/api/admins', admins)
 app.use('/api/users', users)
+app.use('/api/houses', houses)
 
 const port = process.env.port || 5000
 app.listen(port, () => console.log(`Server running on port ${port}`))
