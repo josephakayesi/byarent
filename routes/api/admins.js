@@ -15,7 +15,7 @@ const Admin = require('../../models/Admin')
 // @route   GET api/admins/test
 // @desc    Tests admin route
 // @access  Public
-router.get('/test', (req, res) => res.json({msg: 'Posts routes works'}))
+router.get('/test', (req, res) => res.json({ msg: 'Posts routes works' }))
 
 // @route   POST api/admins/register
 // @desc    Register admin
@@ -29,8 +29,8 @@ router.post('/register', (req, res) => {
     }
     Admin.findOne()
         .or([{ email: req.body.email }, { username: req.body.username }])
-        .then(user => {
-            if (user) {
+        .then(admin => {
+            if (admin) {
                 errors.usernameOrEmail = 'Username or email already exists'
                 return res.status(400).json(errors)
             }
@@ -66,22 +66,22 @@ router.post('/register', (req, res) => {
 // @desc    Login admin / Returning JWT Token
 // @access  Public
 router.post('/login', (req, res) => {
-    const {errors, isValid} = validateLoginInput(req.body)
+    const { errors, isValid } = validateLoginInput(req.body)
 
     // Check Validation
-    if(!isValid){
+    if (!isValid) {
         return res.status(400).json(errors)
     }
 
     const usernameOrEmail = req.body.usernameOrEmail
     const password = req.body.password
 
-    // Find user by username or email
+    // Find admin by username or email
     Admin.findOne()
         .or([{ email: usernameOrEmail }, { username: usernameOrEmail }])
         .then(admin => {
             if (!admin) {
-                errors.usernameOrEmail = 'User not found'
+                errors.usernameOrEmail = 'Admin not found'
                 return res.status(404).json(errors)
             }
 
@@ -89,7 +89,7 @@ router.post('/login', (req, res) => {
             bcrypt.compare(password, admin.password)
                 .then(isMatch => {
                     if (isMatch) {
-                        // User Matched
+                        // Admin Matched
                         const payload = { id: admin.id, name: admin.name, username: admin.username, avatar: admin.avatar }; //Create JWT Payload
 
                         // Sign Token
@@ -112,13 +112,13 @@ router.post('/login', (req, res) => {
 // @route   GET api/admins/current
 // @desc    Return current admin
 // @access  Private
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-    res.json({
-        id: req.user.id,
-        name: req.user.name,
-        username: req.user.username,
-        email: req.user.email
-    })
+router.get('/current', passport.authenticate('admin', { session: false }), (req, res) => {
+        res.json({
+            id: req.user.id,
+            name: req.user.name,
+            username: req.user.username,
+            email: req.user.email
+        })
 })
 
 module.exports = router
