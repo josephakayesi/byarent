@@ -6,12 +6,16 @@
   "author": "Joseph Akayesi",
   "license": "MIT",
   "scripts": {
+    "client-install": "cd client && yarn install",
     "start": "node server/server",
-    "server": "nodemon server/server"
+    "server": "nodemon server/server",
+    "client": "cd client && yarn start",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "gravatar": "^1.8.0",
