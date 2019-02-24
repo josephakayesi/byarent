@@ -17,12 +17,12 @@ class Login extends Component {
     onFormSubmit = (event) => {
         event.preventDefault()
 
-        const userData = {
+        const adminData = {
             usernameOrEmail: this.state.usernameOrEmail,
             password: this.state.password
         }
 
-        console.log(userData)
+        console.log(adminData)
     }
 
     render() {
