@@ -1,0 +1,16 @@
+.addButton {
+    width: 100px; 
+    height: 100px;
+}
+
+.table tr {
+  cursor: pointer;
+}
+
+.fa {
+    color: black;
+  }
+
+.fa:hover {
+    color: red;
+}

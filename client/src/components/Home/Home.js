@@ -42,7 +42,7 @@ class Home extends Component {
             <div>
                 <Navbar />
                 <div className="container">
-                    <div className='d-flex mt-1 p-5'>
+                    <div className='d-flex mt-1 pt-3'>
                         <HouseList houses={this.state.houses} />
                     </div>
                 </div>
