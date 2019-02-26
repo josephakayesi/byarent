@@ -27,12 +27,17 @@ class Navbar extends Component {
                 name: 'Byarent user',
                 username: 'byarentuser',
                 avatar: 'https://gravatar.com/avatar/60c51a05870d5d3d0ef3bd6d92c7f69a?s=200&r=pg&d=mm'
-            }
+            },
+            cartItems: []
         }
     }
 
     onLogoutClick = () => {
         console.log('logout user')
+    }
+
+    componentWillReceiveProps(){
+        this.setState({cartItems: this.props.cartItems})
     }
     render() {
         return (
@@ -63,7 +68,7 @@ class Navbar extends Component {
                         </ul>
                     </div>
                     <div className="d-flex">
-                        <Cart />
+                        <Cart cartItems={this.state.cartItems}/>
                         {this.state.isAuthenticated ? <div style={{ borderLeft: '0.09rem solid white', height: '40px' }}></div> : null}
                         {/* <div style={{ borderLeft: '0.5px solid white', height: '40px' }}></div> */}
                         {this.state.isAuthenticated ? <Avatar onLogoutClick={this.onLogoutClick} isAuthenticated={this.state.isAuthenticated} user={this.state.user} /> : <AuthenticationLinks />}

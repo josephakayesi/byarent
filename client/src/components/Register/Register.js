@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from '../Navbar/Navbar'
 
 class Register extends Component {
     constructor() {
@@ -38,7 +37,6 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <Navbar />
                 <div className='container'>
                     <div className='row'>
                         <div className='col-md-6 mx-auto bg-light mt-5 p-5 rounded'>

@@ -6,13 +6,15 @@ class HouseList extends Component {
     return (
       <div>
         {this.props.houses.map((house, index) => {
-          console.log(index)
           return (
               <House
                 key={index}
+                id={index}
                 name={house.name}
                 description={house.description.split("", 72)}
+                price={house.price}
                 image={house.image}
+                addItemToCart={this.props.addItemToCart}
               />
           )
         })}

@@ -6,7 +6,7 @@ class ForRent extends Component {
     render() {
         return (
             <div>
-                <Navbar />
+                {/* <Navbar /> */}
                 <div className="container">
                     <h1 className="display-4">ForRent Component</h1>
                 </div>

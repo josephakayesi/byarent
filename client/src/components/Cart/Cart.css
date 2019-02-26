@@ -1,8 +1,3 @@
-.addButton {
-    width: 100px; 
-    height: 100px;
-}
-
 .table tr {
   cursor: pointer;
 }
@@ -13,4 +8,12 @@
 
 .fa:hover {
     color: red;
+}
+
+.dropdown-menu-center {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
 }
